@@ -1,0 +1,30 @@
+# prj/templates/layout.html 얘가 제일 조상임
+{% load static %}
+
+<!-- prj/templates/layout.html -->
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Hyerim{% endblock %}</title>
+
+    {% block extra_head %}
+        <link rel="stylesheet" href="{% static 'main.css' %}" />
+    {% endblock %}
+</head>
+<body>
+    <h1>이혜림</h1>
+
+    {% block content %}
+        <img src="{% static 'girlsin.jpg' %}" alt="main logo image">
+        <h1>Hyerim site</h1>
+    {% endblock %}
+
+    <hr/>
+    No &copy;! <img src="http://www.pngmart.com/files/8/Copyleft-PNG-Transparent-Picture.png" height="42" width="42" style="margin-bottom: -5px" />2019. logistex.
+
+    {% block extra_body %}
+         <script src="{% static 'main.js' %}"></script>
+    {% endblock %} {# 자바스크립트 등을 위하여 #}
+</body>
+</html>
