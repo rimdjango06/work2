@@ -25,7 +25,7 @@ SECRET_KEY = '7s!f3u5=ir$ft3^%dr8@8y$=@s%-bs66a#lv2h%@^imz+f46a8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['rimdjango1105.pythonanywhere.com']
+ALLOWED_HOSTS = ['.pythonanywhere.com']
 
 
 # Application definition
