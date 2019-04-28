@@ -26,9 +26,7 @@ SECRET_KEY = '7s!f3u5=ir$ft3^%dr8@8y$=@s%-bs66a#lv2h%@^imz+f46a8'
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    '.pythonanywhere.com',
+    '*',
 ]
 
 

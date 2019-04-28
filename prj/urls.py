@@ -15,4 +15,4 @@ if settings.DEBUG:                                       # 추가 2
     import debug_toolbar                                 # 추가 2
     urlpatterns += [                                     # 추가 2
         path('__debug__/', include(debug_toolbar.urls)), # 추가 2
-    ]  
+    ]
