@@ -22,7 +22,12 @@
             {% for item in item_list %}
             <tr>
                 <td> {{ item.id }} </td>
-                <td> {{ item.name }} </td>
+
+                <td>
+                    <a href="{{ item.get_absolute_url }}">
+                        {{ item.name }}
+                    </a>
+                </td>
                 <td> {{ item.desc }} </td>
                 <td> {{ item.photo }} </td>
                 <td> {{ item.created_at }} </td>
@@ -45,11 +50,11 @@
     <hr>
     {% for item in item_list %}
         {{ item.name }} #
-        {{ item.desc }} #
+        {{ item.desc }} # <br/>
         {{ item.photo }} #
         {{ item.created_at }} #
         {{ item.updated_at }} <br/>
-        {% if item.photo %}
+        {% if item.photo %}<br/>
             <img src="{{ item.photo.url }}" />
         {% endif %} <br/>
     {% endfor %}
