@@ -1,6 +1,6 @@
 # shop/admin.py
 from django.contrib import admin
-from .models import Item, Review, Tag
+from shop.models import Item, Review, Tag
 
 
 @admin.register(Item)  # 아래 클래스가 Post 모델을 관리하는 클래스임
