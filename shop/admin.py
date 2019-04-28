@@ -4,7 +4,7 @@ from .models import Item, Review, Tag
 
 
 @admin.register(Item)  # 아래 클래스가 Post 모델을 관리하는 클래스임
-class PostAdmin(admin.ModelAdmin):
+class ItemAdmin(admin.ModelAdmin):
     list_display = ['id', 'name', 'desc', 'created_at',   # short content
                     'tagged',                                   # tagged
                     'updated',  # 'created_at',
@@ -17,7 +17,7 @@ class PostAdmin(admin.ModelAdmin):
 
 
 @admin.register(Review)
-class CommentAdmin(admin.ModelAdmin):
+class ReviewAdmin(admin.ModelAdmin):
     # list_display = ['id', 'post', 'message', 'updated_at', ]  # 바른 현지 시각
     list_display = ['id', 'item', 'message', 'updated', ]
     list_display_links = ['id', 'message', ]
