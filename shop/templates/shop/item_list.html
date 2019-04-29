@@ -37,10 +37,12 @@
         </tbody>
     </table> <br/><br/>
 
-    {{ request }} <br/>
-    request.method: {{ request.method }} <br/>
-    request.GET: {{ request.GET }} <br/>
-    request.META: {{ request.META }}
+    <a href="{% url 'shop:item_new' %}">새 상품 등록</a><br/><br/>
+
+    <!--{{ request }} <br/>-->
+    <!--request.method: {{ request.method }} <br/>-->
+    <!--request.GET: {{ request.GET }} <br/>-->
+    <!--request.META: {{ request.META }}-->
     <hr/>
     {{ item_list }}
     <hr>
