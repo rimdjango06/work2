@@ -26,7 +26,9 @@ SECRET_KEY = '7s!f3u5=ir$ft3^%dr8@8y$=@s%-bs66a#lv2h%@^imz+f46a8'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '*',
+    'localhost',
+    '127.0.0.1',
+    '.pythonanywhere.com',
 ]
 
 
@@ -39,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django.contrib.humanize',
     'debug_toolbar',
     'django_extensions',
     'shop',
@@ -64,7 +65,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'prj', 'templates')],
-        'APP_DIRS': True,
+        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
