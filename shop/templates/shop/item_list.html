@@ -17,6 +17,8 @@
             <th>사진</th>
             <th>등록 일시</th>
             <th>수정 일시</th>
+            <th>상품수정</th>
+            <th>상품삭제</th>
         </thead>
         <tbody>
             {% for item in item_list %}
@@ -32,12 +34,14 @@
                 <td> {{ item.photo }} </td>
                 <td> {{ item.created_at }} </td>
                 <td> {{ item.updated_at }} </td>
+                <td><a href="{% url 'shop:item_edit' item.pk %}">상품 정보 수정</a></td>
+                <td><a href="{% url 'shop:item_remove' item.pk %}">상품 정보 삭제</a></td>
             </tr>
             {% endfor %}
         </tbody>
     </table> <br/><br/>
 
-    <!--<a href="{% url 'shop:item_new' %}">새 상품 등록</a><br/><br/>-->
+    <a href="{% url 'shop:item_new' %}">새 상품 등록</a><br/><br/>
 
     <!--{{ request }} <br/>-->
     <!--request.method: {{ request.method }} <br/>-->

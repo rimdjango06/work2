@@ -68,71 +68,85 @@ from django.http import HttpResponse
 
 from django.shortcuts import render, get_object_or_404
 from shop.models import Item, Tag
+from .form import ItemForm  # b29)
+
 
 from django.shortcuts import redirect
 import re
 
-# def item_new(request, item=None):  # 인자가 추가되었음
-#     error_list = []
-#     initial = {}
-#
-#     if request.method == 'POST':
-#         data = request.POST
-#         files = request.FILES
-#
-#         name = data.get('name')
-#         desc = data.get('desc')
-#         price = data.get('price')
-#         photo = files.get('photo')
-#         is_published = data.get('is_published') in (True, 't', 'True', '1')
-#
-#         # 유효성 검사
-#         if len(name) < 2:
-#             error_list.append('name을 2글자 이상 입력해주세요.')
-#
-#         if re.match(r'^[\da-zA-Z\s]+$', desc):
-#             error_list.append('한글을 입력해주세요.')
-#
-#         if not error_list:
-#             # 저장 시도
-#             if item is None:
-#                 item = Item()
-#
-#             item.name = name
-#             item.desc = desc
-#             item.price = price
-#             item.is_published = is_published
-#             if photo:
-#                 item.photo.save(photo.name, photo, save=False)
-#
-#             try:
-#                 item.save()
-#             except Exception as e:
-#                 error_list.append(e)
-#             else:
-#                 # return redirect(item)  # item.get_absolute_url 호출됨
-#                 return redirect('shop:item_list')
-#
-#         initial = {
-#             'name': name,
-#             'desc': desc,
-#             'price': price,
-#             'photo': photo,
-#             'is_published': is_published,
-#         }
-#     else:
-#         if item is not None:
-#             initial = {
-#                 'name': item.name,
-#                 'desc': item.desc,
-#                 'price': item.price,
-#                 'photo': item.photo,
-#                 'is_published': item.is_published,
-#             }
-#     return render(request, 'shop/item_form.html', {
-#         'error_list': error_list,
-#         'initial': initial,
-#     })
+
+def item_new(request, item=None):  # 인자가 추가되었음
+    if request.method == 'POST':                        # 'POST' 요청이면
+        form = ItemForm(request.POST, request.FILES, instance=item)    # 값을 가진 폼 생성
+        if form.is_valid():         # 유효성 검사 통과하면
+            item = form.save()      # ModelForm 기능을 이용해서 DB 저장
+            return redirect(item)   # 저장된 item 보여주기
+    else:                                               # 'POST' 요청 아니면
+        form = ItemForm()                               # 빈 폼 생성
+
+    return render(request, 'shop/item_form.html', {
+        'form': form,               # form 자체만 맥락 변수로 전달
+    })
+    # error_list = []
+    # initial = {}
+    #
+    # if request.method == 'POST':
+    #     data = request.POST
+    #     files = request.FILES
+    #
+    #     name = data.get('name')
+    #     desc = data.get('desc')
+    #     price = data.get('price')
+    #     photo = files.get('photo')
+    #     is_published = data.get('is_published') in (True, 't', 'True', '1')
+    #
+    #     # 유효성 검사
+    #     if len(name) < 2:
+    #         error_list.append('name을 2글자 이상 입력해주세요.')
+    #
+    #     if re.match(r'^[\da-zA-Z\s]+$', desc):
+    #         error_list.append('한글을 입력해주세요.')
+    #
+    #     if not error_list:
+    #         # 저장 시도
+    #         if item is None:
+    #             item = Item()
+    #
+    #         item.name = name
+    #         item.desc = desc
+    #         item.price = price
+    #         item.is_published = is_published
+    #         if photo:
+    #             item.photo.save(photo.name, photo, save=False)
+    #
+    #         try:
+    #             item.save()
+    #         except Exception as e:
+    #             error_list.append(e)
+    #         else:
+    #             # return redirect(item)  # item.get_absolute_url 호출됨
+    #             return redirect('shop:item_list')
+    #
+    #     initial = {
+    #         'name': name,
+    #         'desc': desc,
+    #         'price': price,
+    #         'photo': photo,
+    #         'is_published': is_published,
+    #     }
+    # else:
+    #     if item is not None:
+    #         initial = {
+    #             'name': item.name,
+    #             'desc': item.desc,
+    #             'price': item.price,
+    #             'photo': item.photo,
+    #             'is_published': item.is_published,
+    #         }
+    # return render(request, 'shop/item_form.html', {
+    #     'error_list': error_list,
+    #     'initial': initial,
+    # })
 
 
 
@@ -152,6 +166,15 @@ def item_list(request):
     })
 
 
+def item_edit(request, pk):
+    item = get_object_or_404(Item, pk=pk)
+    return item_new(request, item)
+
+
+def item_remove(request, pk):
+    item = get_object_or_404(Item, pk=pk)
+    item.delete()
+    return redirect('shop:item_list')
 
 # def test_templates(requset):
 #     from django.template import Context, Template

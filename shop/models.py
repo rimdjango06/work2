@@ -19,6 +19,8 @@ class Item(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     tags = models.ManyToManyField('Tag', blank=True, related_name='tags')
+    price = models.PositiveIntegerField(default=0)
+    is_published = models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-id']  # Post 객체의 기본 정렬 순서 지정
