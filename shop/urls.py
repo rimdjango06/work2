@@ -12,7 +12,7 @@ urlpatterns = [
     # path('archives/<yyyy:year>/', views.year_archive),
     path('', views.item_list, name='item_list'),
     path('<int:pk>/', views.item_detail, name='item_detail'),
-    # path('new/', views.item_new, name='item_new'),
+    path('new/', views.item_new, name='item_new'),
     # path('test_templates/', views.test_templates),  # 추가
 ]
 
