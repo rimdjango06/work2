@@ -1,5 +1,5 @@
 from django.urls import path, register_converter
-from shop import views, converters
+from shop import views
 
 app_name = 'shop'
 
