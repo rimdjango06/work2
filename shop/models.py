@@ -4,11 +4,13 @@ from pytz import timezone  # 현지 시각 출력을 위하여
 from django.conf import settings
 from django.urls import reverse
 
+
 def local_time(input_time):
     fmt = '%Y-%m-%d %H:%M'
     my_zone = timezone(settings.TIME_ZONE)
     my_local_time = input_time.astimezone(my_zone)
     return my_local_time.strftime(fmt)
+
 
 class Item(models.Model):
 	name = models.CharField(max_length=20)
@@ -51,6 +53,7 @@ class Item(models.Model):
 		# return reverse('blog:post_detail', args=[self.pk])
 		return reverse('shop:item_detail', kwargs={'pk': self.pk})  # reverse 임포트 시켜주어야함.
 
+
 class Review(models.Model):
     item = models.ForeignKey(Item, on_delete=models.CASCADE,
                              related_name='reviews', verbose_name='아이템')
@@ -67,6 +70,7 @@ class Review(models.Model):
     def updated(self):
         return local_time(self.updated_at)
     updated.short_description = '수정 일시'
+
 
 class Tag(models.Model):
     name = models.CharField('태그', max_length=100, unique=True)
