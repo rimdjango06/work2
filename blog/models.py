@@ -4,7 +4,6 @@ from pytz import timezone  # 현지 시각 출력을 위하여
 from django.conf import settings
 from django.urls import reverse
 
-
 def local_time(input_time):
     fmt = '%Y-%m-%d %H:%M'
     my_zone = timezone(settings.TIME_ZONE)
