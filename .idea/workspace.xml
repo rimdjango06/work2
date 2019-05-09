@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7de2b1d0-8d9c-49e4-a843-f580cf678087" name="Default Changelist" comment="" />
+    <list default="true" id="7de2b1d0-8d9c-49e4-a843-f580cf678087" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/shop/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/migrations/0002_item_photo.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/migrations/0003_item_price.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/migrations/0004_item_is_published.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/migrations/0005_auto_20190421_1701.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop/migrations/__init__.py" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
