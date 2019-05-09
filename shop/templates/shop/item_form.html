@@ -7,8 +7,8 @@
 
 {% block content %}
     {{ block.super }}
-        <div class="container">
-            <div class="col-sm-12">
+    <div class="container">
+        <div class="col-sm-12">
             {% if request.path == '/shop/new/' %}
                 <h2>상품 등록</h2>
             {% elif request.path|slice:":11" == '/shop/edit/' %}
@@ -21,75 +21,6 @@
                 </table>
                 <input type="submit" value="저장하기" class="btn btn-primary" />
             </form>
-            </div>
         </div>
-    <!--<div class="container">-->
-        <!--<div class="col-sm-12">-->
-            <!--{{ request.path }}-->
-            <!--{% if request.path == '/shop/new/' %}-->
-                <!--<h2>상품 등록</h2>-->
-            <!--{% elif request.path|slice:"5:11" == '/edit/' %}-->
-                <!--<h2>상품 수정</h2>-->
-            <!--{% endif %}-->
-
-            <!--{% if error_list %}-->
-                <!--<div class="alert alert-danger">-->
-                    <!--error_list: {{ error_list }}-->
-                <!--</div>-->
-            <!--{% endif %}-->
-
-            <!--{% if initial %}-->
-                <!--<div class="alert alert-info">-->
-                    <!--initial: {{ initial }}-->
-                <!--</div>-->
-            <!--{% endif %}-->
-
-            <!--<form action="" method="post" enctype="multipart/form-data" autocomplete="off">-->
-                <!--{% csrf_token %}-->
-
-                <!--<table class="table table-bordered">-->
-                    <!--<tbody>-->
-                        <!--<tr>-->
-                            <!--<th>상품 이름</th>-->
-                            <!--<td>-->
-                                <!--<input type="text" name="name" value="{{ initial.name }}" class="form-control" />-->
-                            <!--</td>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                            <!--<th>상품 설명</th>-->
-                            <!--<td>-->
-                                <!--<textarea name="desc" class="form-control"-->
-                                    <!--cols="40" rows="10">{{ initial.desc }}</textarea>-->
-                            <!--</td>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                            <!--<th>가격 (원)</th>-->
-                            <!--<td>-->
-                                <!--<input type="text" name="price" value="{{ initial.price }}" class="form-control" style="width:150px; text-align:right;"/>-->
-                            <!--</td>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                            <!--<th>상품 사진</th>-->
-                            <!--<td>-->
-                                <!--{% if initial.photo %}<img src="{{ initial.photo.url }}"/>{% endif %}-->
-                                <!--<input type="file" name="photo" {% if initial.photo %}value="{{ initial.photo.url }}"-->
-                                       <!--{% endif %}-->
-                                       <!--class="form-control" />-->
-                            <!--</td> // 여기 다시 확인하기-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                            <!--<th>출시 여부</th>-->
-                            <!--<td>-->
-                                <!--<input type="checkbox" name="is_published" value="1"-->
-                                       <!--{% if initial.is_published %}checked{% endif %} />-->
-                            <!--</td>-->
-                        <!--</tr>-->
-                    <!--</tbody>-->
-                <!--</table>-->
-
-                <!--<input type="submit" value="저장하기" class="btn btn-primary" />-->
-            <!--</form>-->
-
-        <!--</div>-->
-    <!--</div>-->
+    </div>
 {% endblock content %}
